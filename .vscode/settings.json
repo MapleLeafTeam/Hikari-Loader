@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "testdb1",
+            "connectString": "postgres://xovyafgv:YhY4V0awVyWccPJ7J8K30u2fbPH44tZM@tiny.db.elephantsql.com/xovyafgv"
+        }
+    ]
+}
