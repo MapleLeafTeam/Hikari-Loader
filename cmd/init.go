@@ -17,7 +17,7 @@ var initCmd = &cobra.Command{
 	Short: "install the Hikari-CMS",
 	Long:  `use this command to install the Hikari-CMS in your server`,
 	Run: func(cmd *cobra.Command, args []string) {
-		command1 := exec.Command("git", "clone", "https://github.com/MapleLeafTeam/Hikari-Core.git")
+		command1 := exec.Command("git", "clone", "git://github.com/MapleLeafTeam/Hikari-Core.git")
 		err1 := command1.Run()
 		if err1 != nil {
 			log.Fatalf("command1.Run() failed with %s\n", err1)
