@@ -43,10 +43,15 @@ var initCmd = &cobra.Command{
 			log.Fatalf("command2.Run() failed with %s\n", err4)
 		}
 
-		command5 := exec.Command("cd Hikari-Core && python init.py && poetry run uvicorn main:app --host 0.0.0.0 --port 8080")
+		command5 := exec.Command("python" , "init.py")
 		err5 := command5.Run()
 		if err5 != nil {
 			log.Fatalf("command5.Run() failed with %s\n", err5)
+		}
+		command6 := exec.Command("poetry" , "run" , "uvicorn" , "main:app" , "--host" , "0.0.0.0" , "--port" , "8080")
+		err6 := command6.Run()
+		if err6 != nil{
+			log.Fatalf("command6.Run() failed with %s\n", err6)
 		}
 		fmt.Printf("runing now!")
 	},
