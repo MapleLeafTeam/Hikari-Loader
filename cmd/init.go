@@ -17,7 +17,15 @@ var initCmd = &cobra.Command{
 	Short: "install the Hikari-CMS",
 	Long:  `use this command to install the Hikari-CMS in your server`,
 	Run: func(cmd *cobra.Command, args []string) {
-		command1 := exec.Command("git", "clone", "git://github.com/MapleLeafTeam/Hikari-Core.git")
+		path := exec.Command("pwd")
+		out, err := path.CombinedOutput()
+		if err != nil {
+			fmt.Printf("combined out:\n%s\n", string(out))
+			log.Fatalf("path.Run() failed with %s\n", err)
+		}
+		fmt.Printf("combined out:\n%s\n", string(out))
+
+		command1 := exec.Command("git", "clone", "https://ghproxy.net/https://github.com/MapleLeafTeam/Hikari-Core.git")
 		err1 := command1.Run()
 		if err1 != nil {
 			log.Fatalf("command1.Run() failed with %s\n", err1)
@@ -43,14 +51,14 @@ var initCmd = &cobra.Command{
 			log.Fatalf("command2.Run() failed with %s\n", err4)
 		}
 
-		command5 := exec.Command("python" , "init.py")
+		command5 := exec.Command("python", "init.py")
 		err5 := command5.Run()
 		if err5 != nil {
 			log.Fatalf("command5.Run() failed with %s\n", err5)
 		}
-		command6 := exec.Command("poetry" , "run" , "uvicorn" , "main:app" , "--host" , "0.0.0.0" , "--port" , "8080")
+		command6 := exec.Command("poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080")
 		err6 := command6.Run()
-		if err6 != nil{
+		if err6 != nil {
 			log.Fatalf("command6.Run() failed with %s\n", err6)
 		}
 		fmt.Printf("runing now!")

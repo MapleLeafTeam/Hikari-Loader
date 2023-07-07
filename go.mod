@@ -1,4 +1,4 @@
-module github.com/MapleLeafTeam/Hikari-Cli
+module github.com/MapleLeafTeam/HCL
 
 go 1.20
 
