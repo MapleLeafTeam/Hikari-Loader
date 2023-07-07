@@ -1,4 +1,4 @@
-module github.com/MapleLeafTeam/HCL
+module github.com/MapleLeafTeam/hcl
 
 go 1.20
 

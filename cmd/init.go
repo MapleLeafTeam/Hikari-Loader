@@ -6,6 +6,7 @@ package cmd
 import (
 	"fmt"
 	"log"
+	"os"
 	"os/exec"
 
 	"github.com/spf13/cobra"
@@ -17,14 +18,6 @@ var initCmd = &cobra.Command{
 	Short: "install the Hikari-CMS",
 	Long:  `use this command to install the Hikari-CMS in your server`,
 	Run: func(cmd *cobra.Command, args []string) {
-		path := exec.Command("pwd")
-		out, err := path.CombinedOutput()
-		if err != nil {
-			fmt.Printf("combined out:\n%s\n", string(out))
-			log.Fatalf("path.Run() failed with %s\n", err)
-		}
-		fmt.Printf("combined out:\n%s\n", string(out))
-
 		command1 := exec.Command("git", "clone", "https://ghproxy.net/https://github.com/MapleLeafTeam/Hikari-Core.git")
 		err1 := command1.Run()
 		if err1 != nil {
@@ -39,7 +32,11 @@ var initCmd = &cobra.Command{
 		}
 		fmt.Printf("installed Poetry susesfully")
 
-		command3 := exec.Command("cd", "Hikari-Core")
+		pat, _ := os.Getwd()
+		var paths string
+		paths += pat
+		paths += "/Hikari-Core"
+		command3 := exec.Command("cd", paths)
 		err3 := command3.Run()
 		if err3 != nil {
 			log.Fatalf("command3.Run() failed with %s\n", err3)
