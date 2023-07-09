@@ -1,4 +1,4 @@
-module github.com/MapleLeafTeam/hcl
+module github.com/MapleLeafTeam/Hikari-Core-loader
 
 go 1.20
 
