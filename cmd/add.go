@@ -1,6 +1,5 @@
 /*
 Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
@@ -26,8 +25,17 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	url.AddCommand(addCmd)
-
+	var id string
+	var typr string
+	var description string
+	var status string
+	var playback_link string
+	// 参数分别是：标志结果、长选项、短选项、默认值、描述
+	addCmd.Flags().StringVarP(&id, "id", "i", "new_id", "desc")
+	addCmd.Flags().StringVarP(&typr, "id", "i", "new_id", "desc")
+	addCmd.Flags().StringVarP(&description, "id", "i", "new_id", "desc")
+	addCmd.Flags().StringVarP(&status, "id", "i", "new_id", "desc")
+	addCmd.Flags().StringVarP(&playback_link, "id", "i", "new_id", "desc")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
