@@ -5,7 +5,8 @@ package cmd
 
 import (
 	"fmt"
-
+	"net/http"
+	"net/url"
 	"github.com/spf13/cobra"
 )
 
@@ -20,22 +21,23 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("add called")
+		targetUrl := "http://127.0.0.1:8080/plugins/anime"
+
+		payload := url.Values{"key":{"value"}, "id": {"123"}}
+
+		response, err := http.PostForm(targetUrl, payload)
+
+		if err != nil:
+			
 	},
 }
 
 func init() {
-	var id string
-	var typr string
-	var description string
-	var status string
-	var playback_link string
-	// 参数分别是：标志结果、长选项、短选项、默认值、描述
-	addCmd.Flags().StringVarP(&id, "id", "i", "new_id", "desc")
-	addCmd.Flags().StringVarP(&typr, "id", "i", "new_id", "desc")
-	addCmd.Flags().StringVarP(&description, "id", "i", "new_id", "desc")
-	addCmd.Flags().StringVarP(&status, "id", "i", "new_id", "desc")
-	addCmd.Flags().StringVarP(&playback_link, "id", "i", "new_id", "desc")
+	addCmd.PersistentFlags().String("id", "", "write a id for this")
+	addCmd.PersistentFlags().String("typr", "", "write a id for this")
+	addCmd.PersistentFlags().String("description", "", "write a id for this")
+	addCmd.PersistentFlags().String("status", "", "write a id for this")
+	addCmd.PersistentFlags().String("playback_link", "", "write a id for this")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
